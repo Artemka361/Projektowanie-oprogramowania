@@ -1,0 +1,93 @@
+ELEKTRO-BUD — SYSTEM MAGAZYNOWY
+Specyfikacja wymagań
+
+1. FUNKCJE SYSTEMU
+
+1.1. Kartoteka produktów
+Każdy produkt ma kod EAN, nazwę, kategorię oraz przypisane miejsce składowania (sektor, regał i półka). System umożliwia wyszukiwanie po kodzie EAN lub nazwie i wyświetla lokalizację wybranego produktu.
+
+1.2. Kontrola stanów magazynowych
+System przechowuje bieżącą ilość każdego produktu. Przyjęcie towaru zwiększa stan, a wydanie go zmniejsza. Nie można wydać większej ilości niż aktualnie dostępna. Operacje wykonywane równocześnie przez różnych pracowników muszą aktualizować stan poprawnie, bez utraty danych.
+
+1.3. Przyjęcie dostawy
+Magazynier może zarejestrować przyjęcie towaru, podając produkt i ilość. System zapisuje również osobę odpowiedzialną oraz datę i godzinę operacji.
+
+1.4. Wydanie towaru
+Magazynier rejestruje wydanie produktu. Przed zatwierdzeniem system weryfikuje dostępny stan. Zapis operacji obejmuje produkt, ilość, użytkownika oraz datę i godzinę.
+
+1.5. Rejestr zdarzeń
+System zapisuje historię operacji magazynowych. Kierownik może sprawdzić, kto wykonał daną czynność, jakiego produktu dotyczyła i kiedy miała miejsce.
+
+1.6. Konta i role
+System obsługuje trzy role:
+- Magazynier — wyszukuje produkty, sprawdza ich położenie i stan, rejestruje przyjęcia oraz wydania.
+- Kierownik magazynu — przegląda stany, zarządza danymi produktów, sprawdza historię i korzysta z raportów.
+- Administrator — zarządza kontami, przypisuje uprawnienia i pomaga w odzyskiwaniu dostępu do kont.
+
+1.7. Uwierzytelnianie i uprawnienia
+Korzystanie z systemu wymaga zalogowania. Każdy użytkownik ma własne konto, a dostępne funkcje zależą od przypisanej roli. Hasła muszą być przechowywane w postaci bezpiecznych skrótów, a nie jako zwykły tekst.
+
+1.8. Raportowanie
+Kierownik może przeglądać informacje o aktualnych zapasach i działalności magazynu. Szczegółowy zestaw raportów zostanie ustalony podczas dalszej analizy wymagań.
+
+2. WYMAGANIA POZAFUNKCJONALNE
+
+- Interfejs powinien być prosty i wygodny w codziennej pracy magazynierów.
+- Wyszukiwanie produktów oraz odczyt kodu powinny działać bez zbędnej zwłoki.
+- Typowy czas odpowiedzi systemu powinien wynosić około 1–2 sekund.
+- Logowanie i kontrola dostępu muszą chronić dane przed osobami nieuprawnionymi.
+- Hasła nie mogą być zapisane w formie jawnej.
+- Każdy użytkownik może korzystać wyłącznie z funkcji dostępnych dla jego roli.
+- System powinien poprawnie obsługiwać jednoczesne operacje dotyczące tego samego produktu.
+- Kierownik powinien mieć możliwość sprawdzania danych magazynowych również poza magazynem.
+
+3. AKTORZY SYSTEMU
+
+3.1. Magazynier
+- Wyszukuje produkty i sprawdza ich lokalizację.
+- Weryfikuje dostępne ilości.
+- Rejestruje przyjęcie dostaw.
+- Rejestruje wydanie towaru.
+
+3.2. Kierownik magazynu
+- Kontroluje stany magazynowe.
+- Zarządza informacjami o produktach.
+- Przegląda historię operacji.
+- Generuje i analizuje raporty.
+
+3.3. Administrator
+- Tworzy i obsługuje konta użytkowników.
+- Przydziela oraz zmienia uprawnienia.
+- Pomaga w sytuacjach związanych z utratą dostępu.
+
+4. DIAGRAM PRZYPADKÓW UŻYCIA UML — OPIS
+
+Granica systemu: „System magazynowy”.
+
+Przypadki użycia:
+- Logowanie
+- Wyszukiwanie produktu
+- Sprawdzenie lokalizacji produktu
+- Sprawdzenie stanu magazynowego
+- Przyjęcie towaru
+- Wydanie towaru
+- Przeglądanie historii operacji
+- Zarządzanie danymi produktów
+- Tworzenie raportów
+- Zarządzanie kontami
+- Nadawanie uprawnień
+- Obsługa odzyskiwania dostępu
+
+Powiązania aktorów:
+- Magazynier: logowanie, wyszukiwanie produktu, sprawdzanie lokalizacji i stanu, przyjęcie towaru, wydanie towaru.
+- Kierownik magazynu: logowanie, sprawdzanie stanów, zarządzanie produktami, przeglądanie historii, tworzenie raportów.
+- Administrator: logowanie, zarządzanie kontami, nadawanie uprawnień, obsługa odzyskiwania dostępu.
+
+Uwaga: powyższy opis przedstawia zawartość diagramu przypadków użycia w formie tekstowej. W razie potrzeby właściwy diagram UML można przygotować osobno.
+
+5. ZAŁOŻENIA I OGRANICZENIA
+
+- Każda operacja magazynowa musi być przypisana do zalogowanego użytkownika.
+- System nie może dopuścić do ujemnego stanu magazynowego.
+- Historia operacji powinna umożliwiać późniejszą kontrolę działań.
+- Zakres raportów i szczegóły interfejsu zostaną doprecyzowane na etapie projektowania.
